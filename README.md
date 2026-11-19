@@ -16,7 +16,7 @@ The converter adapts this specific export structure so it can be opened in compa
 
 The compatibility issue was observed in Gaussian Splatting PLY files produced through RayStudio’s **Direct Export** option, shown below.
 
-![RayStudio Gaussian Splatting Direct Export dialog](images/raystudio-direct-export.png)
+![RayStudio Gaussian Splatting Direct Export](images/RayStudio-Direct-export.png)
 
 *RayStudio Gaussian Splatting interface with the “Direct Export” option. The warning shown in the screenshot concerns login and export watermarking; it does not itself indicate the PLY compatibility issue.*
 
