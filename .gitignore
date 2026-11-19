@@ -1,0 +1,16 @@
+﻿# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# Gaussian Splatting data
+*.ply
+*.sog
+*.splat
+*.spz
+*.pcd
+*.e57
+
+# Logs and temporary files
+*.log
+*.tmp
