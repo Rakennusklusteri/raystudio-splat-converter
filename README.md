@@ -12,6 +12,20 @@ In tested RayStudio Gaussian PLY exports, each splat contains **38 float32 prope
 
 The converter adapts this specific export structure so it can be opened in compatible third-party tools. This is a **compatibility workaround**, not a claim that the original RayStudio model or its rendering is incorrect.
 
+## Observed issue: RayStudio Direct Export
+
+The compatibility issue was observed in Gaussian Splatting PLY files produced through RayStudio’s **Direct Export** option, shown below.
+
+![RayStudio Gaussian Splatting Direct Export dialog](images/raystudio-direct-export.png)
+
+*RayStudio Gaussian Splatting interface with the “Direct Export” option. The warning shown in the screenshot concerns login and export watermarking; it does not itself indicate the PLY compatibility issue.*
+
+In the **tested Direct Export files**, the PLY header declares `f_rest_0` through `f_rest_20` (21 additional spherical-harmonics coefficients), whereas the commonly expected degree-2 layout uses `f_rest_0` through `f_rest_23` (24 coefficients). This mismatch can prevent third-party software such as SuperSplat from interpreting the exported file as expected.
+
+**This is an observed interoperability problem in the tested files, not a confirmed diagnosis of every RayStudio version or export.** The converter provides a workaround by padding the three absent coefficients with zeros. It does not restore the missing directional color information or repair scanning/SLAM errors.
+
+The issue has been raised with **3DMakerpro technical support** for investigation. This independent converter is shared so that the issue and the workaround can be examined and reproduced.
+
 ## What it does
 
 - Reads a binary little-endian Gaussian PLY file with the expected 38-float property layout.
